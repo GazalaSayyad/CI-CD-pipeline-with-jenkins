@@ -59,9 +59,9 @@ class Model:
 
         # load and Run model
         clf_lda = load(Model.__filename_lda__)
+        print("LDA model score: %f" %clf_lda.score(X_test, y_test))
         
-        print(int(clf_lda.score(X_test, y_test)*100))
-            
+               
             
 if __name__ == '__main__':
     tm = Model()

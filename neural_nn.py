@@ -54,8 +54,9 @@ class ModelNN:
 
         # load and Run model
         clf_lda = load(Model.__filename_nn__)
+
+        print("NN model score: %f" %clf_lda.score(X_test, y_test))
         
-        print(int(clf_lda.score(X_test, y_test)*100))
             
 
 if __name__ == '__main__':
