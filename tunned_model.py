@@ -42,16 +42,16 @@ class TUNModel:
             'activation' : ['identity', 'logistic', 'tanh', 'relu'],
             'solver' : ['lbfgs', 'sgd', 'adam'],
             'hidden_layer_sizes': [(300,),(500,)],
-            'max_iter': [1000],
+            'max_iter': [20000],
             'alpha': [1e-5, 0.001, 0.01, 0.1, 1, 10],
-            'random_state':[0]
+            'random_state':[1]
         }
         ]
 
         clf_neuralnet = GridSearchCV(MLPClassifier(), param_grid,scoring='accuracy')
         clf_neuralnet.fit(X_train, y_train)
         print("The Neural Net (few parameters) best prediction is ...")
-        print(clf_neuralnet.score(X_test, y_test))
+        print("Tunned NN model score: %f" %clf_neuralnet.score(X_test, y_test))
         print("Best parameters set found on development set:")
         print(clf_neuralnet.best_params_)
 
