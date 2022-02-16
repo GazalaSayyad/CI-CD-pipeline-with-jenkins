@@ -13,7 +13,7 @@ class ModelNN:
 
     __training__ = "./dataset/train.csv"
     __testing__ = "./dataset/test.csv"
-    __filename_nn__ = './model/nn.joblib'
+    __filename_nn__ = "./model/nn.joblib"
 
  
     def __init__(self):
@@ -36,7 +36,6 @@ class ModelNN:
         X_train = preprocessing.normalize(X_train, norm='l2')
         
         # Models training
-        X_train,y_train=self.lda_model()
         clf_NN = MLPClassifier(solver='adam', activation='relu', alpha=0.0001, hidden_layer_sizes=(500,), random_state=0, max_iter=1000)
         clf_NN.fit(X_train, y_train)
         print("Model fitted..........")
@@ -53,9 +52,9 @@ class ModelNN:
         X_test = preprocessing.normalize(X_test, norm='l2')
 
         # load and Run model
-        clf_lda = load(Model.__filename_nn__)
+        clf_NN = load(ModelNN.__filename_nn__)
 
-        print("NN model score: %f" %clf_lda.score(X_test, y_test))
+        print("NN model score: %f" %clf_NN.score(X_test, y_test))
         
             
 
